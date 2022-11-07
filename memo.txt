@@ -1,0 +1,21 @@
+$ truffle develop
+
+migrate
+migrate --rest
+
+const dex = await Dex.deployed();
+const comp = await ERC20.deployed();
+
+const dai = await ERC20.at("0x28ca03911Ee6F362Bc2949361f5D89ff0e66250c")
+const link = await ERC20.at("0x6302F6f1307cb20e8c7Bf0d8B29B1C88a829D644")
+
+let totalsupply = await dai.totalSupply()
+totalsupply.toString()
+
+await dex.buyToken(dai.address, '100', '10000', {from: accounts[3], value:'100'})
+
+
+let daiBalance = await dai.balanceOf(accounts[3])
+daiBalance.toString()
+
+web3.eth.getBalance(accounts[3])
